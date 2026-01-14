@@ -44,7 +44,7 @@ function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center">
           {/* Copyright - Edit year and name */}
           <p className="text-sm mb-4 md:mb-0">
-            © {currentYear} Mer. All rights reserved.
+            © {currentYear} Meron. All rights reserved.
           </p>
 
           {/* Social Links */}

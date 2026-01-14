@@ -26,20 +26,20 @@ function Projects() {
       demo: 'https://smartapplyy.com/',
     },
     {
-      title: 'Task Management App',
-      description: 'A collaborative task management application with real-time updates, team workspaces, and advanced filtering.',
-      image: null,
-      tech: ['React', 'TypeScript', 'Node.js', 'MongoDB', 'Socket.io'],
+      title: 'Smart Calendar',
+      description: 'A modern calendar application with event management, filtering, and multiple view options for efficient schedule organization.',
+      image: '/smart-calendar.png', // Add your calendar image to public folder
+      tech: ['HTML', 'CSS', 'JavaScript'],
       features: [
-        'Real-time collaboration',
-        'Drag-and-drop task organization',
-        'Team workspaces and permissions',
-        'Advanced search and filtering',
-        'Activity timeline',
-        'Mobile-responsive design',
+        'Month, Week, and Day view options',
+        'Event filtering by category (Work, Personal, Meeting, Reminder, Event, Other)',
+        'Create and manage events',
+        'Upcoming events sidebar',
+        'Search functionality for events',
+        'Responsive design for all devices',
       ],
-      github: 'https://github.com/Meron006/task-manager',
-      demo: 'https://your-demo-url.com',
+      github: 'https://github.com/Meron006/smart-calendar',
+      demo: null, // Add your demo URL if available
     },
     {
       title: 'Social Media Analytics Dashboard',
