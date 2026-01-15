@@ -38,7 +38,7 @@ function Projects() {
         'Search functionality for events',
         'Responsive design for all devices',
       ],
-      github: 'https://github.com/Meron006/smart-calendar',
+      github: 'https://github.com/Meron006/Smart-Calender',
       demo: null, // Add your demo URL if available
     },
     {
