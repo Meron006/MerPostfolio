@@ -27,16 +27,16 @@ function Projects() {
     },
     {
       title: 'Smart Calendar',
-      description: 'A modern calendar application with event management, filtering, and multiple view options for efficient schedule organization.',
-      image: '/smart-calendar.png', // Add your calendar image to public folder
+      description: 'A modern, fully responsive calendar platform with event management, filtering, and multiple view options. Optimized for seamless experience across all devices and screen sizes.',
+      image: '/smart-calendar.png',
       tech: ['HTML', 'CSS', 'JavaScript'],
       features: [
+        'Fully responsive platform - works on mobile, tablet, and desktop',
         'Month, Week, and Day view options',
         'Event filtering by category (Work, Personal, Meeting, Reminder, Event, Other)',
         'Create and manage events',
         'Upcoming events sidebar',
         'Search functionality for events',
-        'Responsive design for all devices',
       ],
       github: 'https://github.com/Meron006/Smart-Calender',
       demo: null, // Add your demo URL if available
