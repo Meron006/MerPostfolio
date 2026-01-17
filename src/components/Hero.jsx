@@ -51,7 +51,15 @@ function Hero() {
 
   // Edit these to show your tech stack
   const techStack = [
-    'React', 'Node.js', 'TypeScript', 'Python', 'PostgreSQL', 'MongoDB', 'AWS', 'Docker'
+    'React',
+    'JavaScript',
+    'HTML',
+    'CSS',
+    'Git',
+    'GitHub',
+    'AWS',
+    'Python',
+    'Supabase',
   ]
 
   return (
