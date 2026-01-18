@@ -46,7 +46,7 @@ function SkillsGrid() {
           {technicalSkills.map((skill, index) => (
             <span
               key={skill}
-              className="group px-6 py-3 bg-gradient-to-br from-white to-primary-50 text-primary-700 rounded-xl text-base font-bold shadow-lg border-2 border-primary-200/50 hover:border-primary-400 hover:from-primary-50 hover:to-primary-100 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 cursor-default animate-fade-in-up"
+              className="group px-6 py-3 bg-gradient-to-br from-white to-primary-50 text-primary-700 rounded-xl text-base font-bold shadow-lg border-2 border-primary-200/50 hover:border-primary-400 hover:from-primary-50 hover:to-primary-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 cursor-default animate-fade-in-up"
               style={{ animationDelay: `${index * 0.06}s` }}
             >
               {skill}
@@ -70,7 +70,7 @@ function SkillsGrid() {
           {softSkills.map((skill, index) => (
             <span
               key={skill}
-              className="group px-6 py-3 bg-gradient-to-br from-white to-gray-50 text-gray-700 rounded-xl text-base font-semibold shadow-lg border-2 border-gray-200/50 hover:border-primary-300 hover:from-primary-50 hover:to-white hover:text-primary-700 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 cursor-default animate-fade-in-up"
+              className="group px-6 py-3 bg-gradient-to-br from-white to-gray-50 text-gray-700 rounded-xl text-base font-semibold shadow-lg border-2 border-gray-200/50 hover:border-primary-300 hover:from-primary-50 hover:to-white hover:text-primary-700 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 cursor-default animate-fade-in-up"
               style={{ animationDelay: `${0.5 + index * 0.06}s` }}
             >
               {skill}

@@ -81,7 +81,7 @@ function About() {
                       index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'
                     }`}
                   >
-                    <div className="group bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 border border-gray-100/50 hover:border-primary-200 hover:-translate-y-1">
+                    <div className="group bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300 border border-gray-100/50 hover:border-primary-200 hover:-translate-y-1.5 hover:scale-[1.02]">
                       <div className="text-primary-600 font-semibold mb-2 text-sm uppercase tracking-wide">{item.year}</div>
                       <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-primary-600 transition-colors">{item.title}</h3>
                       <div className="text-primary-600 font-medium mb-3">{item.organization}</div>

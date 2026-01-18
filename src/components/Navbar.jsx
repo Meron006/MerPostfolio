@@ -44,7 +44,7 @@ function Navbar() {
             to="/" 
             className="text-2xl font-bold gradient-text hover:scale-105 transition-transform duration-300 relative group"
           >
-            Meron
+            MerPortfolio
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300"></span>
           </Link>
 

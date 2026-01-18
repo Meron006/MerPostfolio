@@ -13,7 +13,7 @@
  */
 function ProjectCard({ project }) {
   return (
-    <div className="group bg-white rounded-2xl shadow-lg overflow-hidden card-hover border border-gray-100/50 relative">
+    <div className="group bg-white rounded-2xl shadow-xl overflow-hidden card-hover border border-gray-100/50 relative">
       {/* Hover gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary-50/0 to-primary-100/0 group-hover:from-primary-50/50 group-hover:to-primary-100/30 transition-all duration-500 pointer-events-none"></div>
       
