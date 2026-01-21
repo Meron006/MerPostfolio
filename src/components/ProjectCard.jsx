@@ -13,7 +13,7 @@
  */
 function ProjectCard({ project }) {
   return (
-    <div className="group bg-white rounded-2xl shadow-xl overflow-hidden card-hover border border-gray-100/50 relative">
+    <div className="group bg-white rounded-2xl shadow-2xl overflow-hidden card-hover border border-gray-100/60 relative">
       {/* Hover gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary-50/0 to-primary-100/0 group-hover:from-primary-50/50 group-hover:to-primary-100/30 transition-all duration-500 pointer-events-none"></div>
       
@@ -23,6 +23,7 @@ function ProjectCard({ project }) {
           <img
             src={project.image}
             alt={project.title}
+            loading="lazy"
             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
           />
         ) : (
@@ -31,7 +32,7 @@ function ProjectCard({ project }) {
           </div>
         )}
         {/* Overlay on hover */}
-        <div className="absolute inset-0 bg-primary-600/0 group-hover:bg-primary-600/10 transition-all duration-300"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-primary-700/10 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300"></div>
       </div>
 
       {/* Project Content */}
@@ -42,7 +43,7 @@ function ProjectCard({ project }) {
         </h3>
 
         {/* Description */}
-        <p className="text-gray-600 mb-4 leading-relaxed">
+        <p className="text-gray-700 mb-4 leading-relaxed">
           {project.description}
         </p>
 
