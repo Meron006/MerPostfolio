@@ -70,12 +70,12 @@ function Navbar() {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100"
+            className="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 transition-all duration-300 active:scale-95"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
             <svg
-              className="h-6 w-6"
+              className={`h-6 w-6 transition-transform duration-300 ${isMobileMenuOpen ? 'rotate-90' : ''}`}
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -93,24 +93,35 @@ function Navbar() {
         </div>
 
         {/* Mobile Navigation */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden pb-4 space-y-2">
-            {navItems.map((item) => (
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
+            isMobileMenuOpen
+              ? 'max-h-96 opacity-100 pb-4'
+              : 'max-h-0 opacity-0 pb-0'
+          }`}
+        >
+          <div className="space-y-2 pt-2">
+            {navItems.map((item, index) => (
               <Link
                 key={item.path}
                 to={item.path}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`block px-3 py-2 rounded-md text-base font-medium transition-colors ${
+                className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 transform ${
                   isActive(item.path)
-                    ? 'text-primary-600 bg-primary-50'
-                    : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
+                    ? 'text-primary-600 bg-primary-50 scale-105 shadow-sm'
+                    : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50 hover:scale-105'
+                } ${
+                  isMobileMenuOpen ? 'animate-fade-in-up' : ''
                 }`}
+                style={{
+                  animationDelay: `${index * 0.1}s`,
+                }}
               >
                 {item.label}
               </Link>
             ))}
           </div>
-        )}
+        </div>
       </div>
     </nav>
   )

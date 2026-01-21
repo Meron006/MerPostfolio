@@ -125,6 +125,11 @@ function Hero() {
               >
                 <div className="absolute inset-0 bg-primary-100 rounded-full scale-0 group-hover:scale-100 transition-transform duration-300 opacity-50"></div>
                 <div className="relative z-10">{link.icon}</div>
+                {/* Tooltip */}
+                <span className="absolute -bottom-12 left-1/2 transform -translate-x-1/2 bg-gray-900 text-white text-xs px-3 py-1.5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none z-20">
+                  {link.name}
+                  <span className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45"></span>
+                </span>
               </a>
             ))}
           </div>

@@ -53,12 +53,17 @@ function Footer() {
               <a
                 key={link.name}
                 href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-primary-400 transition-colors"
+                target={link.name === 'Email' ? undefined : '_blank'}
+                rel={link.name === 'Email' ? undefined : 'noopener noreferrer'}
+                className="group relative text-gray-400 hover:text-primary-400 transition-all duration-300 transform hover:scale-110"
                 aria-label={link.name}
               >
                 {link.icon}
+                {/* Tooltip */}
+                <span className="absolute -top-10 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2.5 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap pointer-events-none z-10">
+                  {link.name}
+                  <span className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-gray-800 rotate-45"></span>
+                </span>
               </a>
             ))}
           </div>

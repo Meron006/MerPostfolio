@@ -17,19 +17,109 @@ function Contact() {
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState(null)
+  const [errors, setErrors] = useState({})
+  const [touched, setTouched] = useState({})
 
   // Edit this email address
   const email = 'berihumeron06@gmail.com'
 
+  const validateField = (name, value) => {
+    let error = ''
+    switch (name) {
+      case 'email':
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+        if (!value) {
+          error = 'Email is required'
+        } else if (!emailRegex.test(value)) {
+          error = 'Please enter a valid email address'
+        }
+        break
+      case 'name':
+        if (!value.trim()) {
+          error = 'Name is required'
+        } else if (value.trim().length < 2) {
+          error = 'Name must be at least 2 characters'
+        }
+        break
+      case 'subject':
+        if (!value.trim()) {
+          error = 'Subject is required'
+        } else if (value.trim().length < 3) {
+          error = 'Subject must be at least 3 characters'
+        }
+        break
+      case 'message':
+        if (!value.trim()) {
+          error = 'Message is required'
+        } else if (value.trim().length < 10) {
+          error = 'Message must be at least 10 characters'
+        }
+        break
+      default:
+        break
+    }
+    return error
+  }
+
   const handleChange = (e) => {
+    const { name, value } = e.target
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
+    })
+    
+    // Validate on change if field has been touched
+    if (touched[name]) {
+      const error = validateField(name, value)
+      setErrors({
+        ...errors,
+        [name]: error,
+      })
+    }
+  }
+
+  const handleBlur = (e) => {
+    const { name, value } = e.target
+    setTouched({
+      ...touched,
+      [name]: true,
+    })
+    
+    const error = validateField(name, value)
+    setErrors({
+      ...errors,
+      [name]: error,
     })
   }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    
+    // Mark all fields as touched
+    const allTouched = {
+      name: true,
+      email: true,
+      subject: true,
+      message: true,
+    }
+    setTouched(allTouched)
+    
+    // Validate all fields
+    const newErrors = {}
+    Object.keys(formData).forEach((key) => {
+      const error = validateField(key, formData[key])
+      if (error) {
+        newErrors[key] = error
+      }
+    })
+    
+    setErrors(newErrors)
+    
+    // If there are errors, don't submit
+    if (Object.keys(newErrors).length > 0) {
+      return
+    }
+    
     setIsSubmitting(true)
     setSubmitStatus(null)
 
@@ -39,6 +129,8 @@ function Contact() {
       setIsSubmitting(false)
       setSubmitStatus('success')
       setFormData({ name: '', email: '', subject: '', message: '' })
+      setErrors({})
+      setTouched({})
       
       // Reset status message after 5 seconds
       setTimeout(() => setSubmitStatus(null), 5000)
@@ -90,6 +182,7 @@ function Contact() {
               <div className="animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
                 <label htmlFor="name" className="block text-sm font-semibold text-gray-700 mb-2">
                   Name
+                  <span className="text-red-500 ml-1">*</span>
                 </label>
                 <input
                   type="text"
@@ -97,15 +190,31 @@ function Contact() {
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   required
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-300 hover:border-gray-300"
+                  className={`w-full px-4 py-3 border-2 rounded-lg focus:ring-2 transition-all duration-300 ${
+                    errors.name
+                      ? 'border-red-400 focus:ring-red-500 focus:border-red-500 bg-red-50'
+                      : touched.name && !errors.name
+                      ? 'border-green-400 focus:ring-green-500 focus:border-green-500 bg-green-50'
+                      : 'border-gray-200 focus:ring-primary-500 focus:border-primary-500 hover:border-gray-300'
+                  }`}
                   placeholder="Your name"
                 />
+                {errors.name && (
+                  <p className="mt-1.5 text-sm text-red-600 flex items-center gap-1 animate-fade-in">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                    </svg>
+                    {errors.name}
+                  </p>
+                )}
               </div>
 
               <div className="animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
                 <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
                   Email
+                  <span className="text-red-500 ml-1">*</span>
                 </label>
                 <input
                   type="email"
@@ -113,15 +222,31 @@ function Contact() {
                   name="email"
                   value={formData.email}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   required
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-300 hover:border-gray-300"
-                  placeholder="berihumeron06@gmail.com"
+                  className={`w-full px-4 py-3 border-2 rounded-lg focus:ring-2 transition-all duration-300 ${
+                    errors.email
+                      ? 'border-red-400 focus:ring-red-500 focus:border-red-500 bg-red-50'
+                      : touched.email && !errors.email
+                      ? 'border-green-400 focus:ring-green-500 focus:border-green-500 bg-green-50'
+                      : 'border-gray-200 focus:ring-primary-500 focus:border-primary-500 hover:border-gray-300'
+                  }`}
+                  placeholder="your.email@example.com"
                 />
+                {errors.email && (
+                  <p className="mt-1.5 text-sm text-red-600 flex items-center gap-1 animate-fade-in">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                    </svg>
+                    {errors.email}
+                  </p>
+                )}
               </div>
 
               <div className="animate-fade-in-up" style={{ animationDelay: '0.7s' }}>
                 <label htmlFor="subject" className="block text-sm font-semibold text-gray-700 mb-2">
                   Subject
+                  <span className="text-red-500 ml-1">*</span>
                 </label>
                 <input
                   type="text"
@@ -129,26 +254,57 @@ function Contact() {
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   required
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-300 hover:border-gray-300"
+                  className={`w-full px-4 py-3 border-2 rounded-lg focus:ring-2 transition-all duration-300 ${
+                    errors.subject
+                      ? 'border-red-400 focus:ring-red-500 focus:border-red-500 bg-red-50'
+                      : touched.subject && !errors.subject
+                      ? 'border-green-400 focus:ring-green-500 focus:border-green-500 bg-green-50'
+                      : 'border-gray-200 focus:ring-primary-500 focus:border-primary-500 hover:border-gray-300'
+                  }`}
                   placeholder="What's this about?"
                 />
+                {errors.subject && (
+                  <p className="mt-1.5 text-sm text-red-600 flex items-center gap-1 animate-fade-in">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                    </svg>
+                    {errors.subject}
+                  </p>
+                )}
               </div>
 
               <div className="animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
                 <label htmlFor="message" className="block text-sm font-semibold text-gray-700 mb-2">
                   Message
+                  <span className="text-red-500 ml-1">*</span>
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
+                  onBlur={handleBlur}
                   required
                   rows="6"
-                  className="w-full px-4 py-3 border-2 border-gray-200 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-300 resize-none hover:border-gray-300"
+                  className={`w-full px-4 py-3 border-2 rounded-lg focus:ring-2 transition-all duration-300 resize-none ${
+                    errors.message
+                      ? 'border-red-400 focus:ring-red-500 focus:border-red-500 bg-red-50'
+                      : touched.message && !errors.message
+                      ? 'border-green-400 focus:ring-green-500 focus:border-green-500 bg-green-50'
+                      : 'border-gray-200 focus:ring-primary-500 focus:border-primary-500 hover:border-gray-300'
+                  }`}
                   placeholder="Tell me about your project or opportunity..."
                 />
+                {errors.message && (
+                  <p className="mt-1.5 text-sm text-red-600 flex items-center gap-1 animate-fade-in">
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+                    </svg>
+                    {errors.message}
+                  </p>
+                )}
               </div>
 
               {submitStatus === 'success' && (

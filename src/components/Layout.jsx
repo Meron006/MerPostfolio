@@ -1,5 +1,6 @@
 import Navbar from './Navbar'
 import Footer from './Footer'
+import ScrollToTop from './ScrollToTop'
 
 /**
  * Layout component that wraps all pages
@@ -13,6 +14,7 @@ function Layout({ children }) {
         {children}
       </main>
       <Footer />
+      <ScrollToTop />
     </div>
   )
 }
