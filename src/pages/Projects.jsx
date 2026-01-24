@@ -1,4 +1,4 @@
-import ProjectCard from '../components/ProjectCard'
+import AnimatedProjectCard from '../components/AnimatedProjectCard'
 
 /**
  * Projects page component
@@ -79,13 +79,7 @@ function Projects() {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {projects.map((project, index) => (
-            <div 
-              key={index} 
-              className="animate-fade-in-up" 
-              style={{ animationDelay: `${0.3 + index * 0.1}s` }}
-            >
-              <ProjectCard project={project} />
-            </div>
+            <AnimatedProjectCard key={index} project={project} index={index} />
           ))}
         </div>
 

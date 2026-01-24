@@ -61,5 +61,19 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* Enhanced micro-interactions */
+  .hover-lift {
+    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+  }
+
+  .hover-glow {
+    @apply transition-all duration-300 hover:shadow-lg hover:shadow-primary-500/50;
+  }
+
+  /* Smooth scale on interaction */
+  .interactive-scale {
+    @apply transition-transform duration-200 active:scale-95;
+  }
 }
 

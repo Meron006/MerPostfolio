@@ -143,10 +143,12 @@ function Hero() {
               {techStack.map((tech, index) => (
                 <span
                   key={tech}
-                  className="px-5 py-2.5 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-gray-700 shadow-lg border border-gray-200/50 hover:border-primary-400 hover:text-primary-600 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105"
+                  className="group/tech px-5 py-2.5 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-gray-700 shadow-lg border border-gray-200/50 hover:border-primary-400 hover:text-primary-600 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 hover:bg-primary-50 cursor-default"
                   style={{ animationDelay: `${1.6 + index * 0.1}s` }}
                 >
-                  {tech}
+                  <span className="inline-block group-hover/tech:scale-110 transition-transform duration-300">
+                    {tech}
+                  </span>
                 </span>
               ))}
             </div>
