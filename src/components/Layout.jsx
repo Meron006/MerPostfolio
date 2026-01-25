@@ -9,8 +9,15 @@ import ScrollToTop from './ScrollToTop'
 function Layout({ children }) {
   return (
     <div className="min-h-screen flex flex-col">
+      {/* Skip to main content link for accessibility */}
+      <a
+        href="#main-content"
+        className="skip-to-main"
+      >
+        Skip to main content
+      </a>
       <Navbar />
-      <main className="flex-grow">
+      <main id="main-content" className="flex-grow" role="main">
         {children}
       </main>
       <Footer />

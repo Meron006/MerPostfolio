@@ -36,33 +36,38 @@ function Navbar() {
           ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-100/50'
           : 'bg-white/80 backdrop-blur-sm'
       }`}
+      role="navigation"
+      aria-label="Main navigation"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo/Brand - Edit this to change your name */}
           <Link 
             to="/" 
-            className="text-2xl font-bold gradient-text hover:scale-105 transition-transform duration-300 relative group"
+            className="text-2xl font-bold gradient-text hover:scale-105 transition-transform duration-300 relative group focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 rounded-lg px-2 py-1"
+            aria-label="Home - MerPortfolio"
           >
             MerPortfolio
             <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300"></span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-2">
+          <div className="hidden md:flex space-x-2" role="menubar">
             {navItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
+                className={`relative px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
                   isActive(item.path)
                     ? 'text-primary-600 bg-primary-50 shadow-sm'
                     : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50'
                 }`}
+                aria-current={isActive(item.path) ? 'page' : undefined}
+                role="menuitem"
               >
                 {item.label}
                 {isActive(item.path) && (
-                  <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/2 h-0.5 bg-primary-600 rounded-full"></span>
+                  <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/2 h-0.5 bg-primary-600 rounded-full" aria-hidden="true"></span>
                 )}
               </Link>
             ))}
@@ -70,9 +75,11 @@ function Navbar() {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 transition-all duration-300 active:scale-95"
+            className="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100 transition-all duration-300 active:scale-95 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             <svg
               className={`h-6 w-6 transition-transform duration-300 ${isMobileMenuOpen ? 'rotate-90' : ''}`}
@@ -94,11 +101,14 @@ function Navbar() {
 
         {/* Mobile Navigation */}
         <div
+          id="mobile-menu"
           className={`md:hidden overflow-hidden transition-all duration-500 ease-in-out ${
             isMobileMenuOpen
               ? 'max-h-96 opacity-100 pb-4'
               : 'max-h-0 opacity-0 pb-0'
           }`}
+          role="menu"
+          aria-hidden={!isMobileMenuOpen}
         >
           <div className="space-y-2 pt-2">
             {navItems.map((item, index) => (
@@ -106,7 +116,7 @@ function Navbar() {
                 key={item.path}
                 to={item.path}
                 onClick={() => setIsMobileMenuOpen(false)}
-                className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 transform ${
+                className={`block px-3 py-2 rounded-md text-base font-medium transition-all duration-300 transform focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 ${
                   isActive(item.path)
                     ? 'text-primary-600 bg-primary-50 scale-105 shadow-sm'
                     : 'text-gray-700 hover:text-primary-600 hover:bg-gray-50 hover:scale-105'
@@ -116,6 +126,8 @@ function Navbar() {
                 style={{
                   animationDelay: `${index * 0.1}s`,
                 }}
+                role="menuitem"
+                aria-current={isActive(item.path) ? 'page' : undefined}
               >
                 {item.label}
               </Link>
