@@ -63,14 +63,14 @@ function Projects() {
   ]
 
   return (
-    <div className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-gray-50 to-white">
+    <div className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="max-w-7xl mx-auto">
         {/* Page Header */}
         <div className="text-center mb-16 animate-fade-in-up">
           <h1 className="section-title">
             My <span className="gradient-text">Projects</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mt-4 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-4 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             A collection of projects showcasing my skills and experience in software development
           </p>
           <div className="section-divider mt-6"></div>
@@ -85,8 +85,8 @@ function Projects() {
 
         {/* Call to Action */}
         <div className="mt-20 text-center animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
-          <div className="inline-block bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-gray-100/50">
-            <p className="text-gray-700 mb-6 text-lg font-medium">
+          <div className="inline-block bg-white/80 dark:bg-gray-800/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 border border-gray-100/50 dark:border-gray-700/50">
+            <p className="text-gray-700 dark:text-gray-300 mb-6 text-lg font-medium">
               Interested in seeing more? Check out my GitHub for additional projects and contributions.
             </p>
             <a

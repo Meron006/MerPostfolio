@@ -65,7 +65,7 @@ function Hero() {
   return (
     <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
       {/* Animated background gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-primary-100 animate-gradient" style={{ backgroundSize: '200% 200%' }}></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-white to-primary-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 animate-gradient" style={{ backgroundSize: '200% 200%' }}></div>
       
       {/* Floating shapes for depth */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary-200 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-float"></div>
@@ -85,12 +85,12 @@ function Hero() {
           </h2>
 
           {/* Tagline with fade */}
-          <p className="text-xl md:text-2xl text-gray-700 mb-6 max-w-3xl mx-auto font-medium animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+          <p className="text-xl md:text-2xl text-gray-700 dark:text-gray-300 mb-6 max-w-3xl mx-auto font-medium animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
             {tagline}
           </p>
 
           {/* Description */}
-          <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
+          <p className="text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
             {description}
           </p>
 
@@ -109,6 +109,17 @@ function Hero() {
             >
               View Projects
             </Link>
+            <a
+              href="/resume.pdf"
+              download
+              className="btn-secondary group inline-flex items-center gap-2"
+              aria-label="Download resume"
+            >
+              <svg className="w-5 h-5 group-hover:translate-y-0.5 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              Download Resume
+            </a>
           </div>
 
           {/* Social Links with hover effects */}
@@ -119,7 +130,7 @@ function Hero() {
                 href={link.url}
                 target={link.name === 'Email' ? undefined : '_blank'}
                 rel={link.name === 'Email' ? undefined : 'noopener noreferrer'}
-                className="group relative p-3 text-gray-700 hover:text-primary-600 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1"
+                className="group relative p-3 text-gray-700 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 transition-all duration-300 transform hover:scale-110 hover:-translate-y-1"
                 aria-label={link.name}
                 style={{ animationDelay: `${1.2 + index * 0.1}s` }}
               >
@@ -136,14 +147,14 @@ function Hero() {
 
           {/* Tech Stack with stagger animation */}
           <div className="mt-12 animate-fade-in-up" style={{ animationDelay: '1.4s' }}>
-            <p className="text-sm text-gray-500 mb-6 font-medium uppercase tracking-wider">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-6 font-medium uppercase tracking-wider">
               Tech Stack
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               {techStack.map((tech, index) => (
                 <span
                   key={tech}
-                  className="group/tech px-5 py-2.5 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-gray-700 shadow-lg border border-gray-200/50 hover:border-primary-400 hover:text-primary-600 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 hover:bg-primary-50 cursor-default"
+                  className="group/tech px-5 py-2.5 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-full text-sm font-medium text-gray-700 dark:text-gray-300 shadow-lg border border-gray-200/50 dark:border-gray-700/50 hover:border-primary-400 dark:hover:border-primary-500 hover:text-primary-600 dark:hover:text-primary-400 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 hover:scale-105 hover:bg-primary-50 dark:hover:bg-primary-900/30 cursor-default"
                   style={{ animationDelay: `${1.6 + index * 0.1}s` }}
                 >
                   <span className="inline-block group-hover/tech:scale-110 transition-transform duration-300">

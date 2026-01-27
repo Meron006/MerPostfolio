@@ -13,7 +13,7 @@
  */
 function ProjectCard({ project }) {
   return (
-    <div className="group bg-white rounded-2xl shadow-2xl overflow-hidden card-hover border border-gray-100/60 relative">
+    <div className="group bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden card-hover border border-gray-100/60 dark:border-gray-700/60 relative">
       {/* Hover gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary-50/0 to-primary-100/0 group-hover:from-primary-50/50 group-hover:to-primary-100/30 transition-all duration-500 pointer-events-none"></div>
       
@@ -38,12 +38,12 @@ function ProjectCard({ project }) {
       {/* Project Content */}
       <div className="p-6 relative z-10">
         {/* Title with gradient on hover */}
-        <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors duration-300">
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors duration-300">
           {project.title}
         </h3>
 
         {/* Description */}
-        <p className="text-gray-700 mb-4 leading-relaxed">
+        <p className="text-gray-700 dark:text-gray-300 mb-4 leading-relaxed">
           {project.description}
         </p>
 
@@ -61,7 +61,7 @@ function ProjectCard({ project }) {
         </div>
 
         {/* Features with fade-in effect */}
-        <ul className="list-none text-sm text-gray-600 mb-6 space-y-2">
+        <ul className="list-none text-sm text-gray-600 dark:text-gray-400 mb-6 space-y-2">
           {project.features.map((feature, index) => (
             <li key={index} className="flex items-start gap-2 group-hover:translate-x-1 transition-transform duration-300" style={{ transitionDelay: `${index * 50}ms` }}>
               <span className="text-primary-500 mt-1.5">▹</span>
@@ -71,7 +71,7 @@ function ProjectCard({ project }) {
         </ul>
 
         {/* Links with enhanced hover */}
-        <div className="flex gap-4 pt-4 border-t border-gray-100">
+        <div className="flex gap-4 pt-4 border-t border-gray-100 dark:border-gray-700">
           {project.github && (
             <a
               href={project.github}

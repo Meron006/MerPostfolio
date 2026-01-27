@@ -1,3 +1,4 @@
+import { useIntersectionObserver } from '../hooks/useIntersectionObserver'
 import SkillsGrid from '../components/SkillsGrid'
 
 /**
@@ -30,30 +31,51 @@ function About() {
     },
   ]
 
+  const [headerRef, headerVisible] = useIntersectionObserver({ threshold: 0.1 })
+  const [skillsRef, skillsVisible] = useIntersectionObserver({ threshold: 0.1 })
+  const [timelineRef, timelineVisible] = useIntersectionObserver({ threshold: 0.1 })
+
   return (
-    <div className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-gray-50 to-white">
+    <div className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="max-w-7xl mx-auto">
         {/* Page Header */}
-        <div className="text-center mb-16 animate-fade-in-up">
+        <div 
+          ref={headerRef}
+          className={`text-center mb-16 transition-all duration-700 ease-out ${
+            headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+        >
           <h1 className="section-title">
             <span className="gradient-text">Skills</span> & Expertise
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mt-4 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-4" style={{ transitionDelay: '0.2s' }}>
             A comprehensive overview of my technical capabilities and professional competencies
           </p>
           <div className="section-divider mt-6"></div>
         </div>
 
         {/* Skills Section - Main Focus */}
-        <div className="mb-20 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+        <div 
+          ref={skillsRef}
+          className={`mb-20 transition-all duration-700 ease-out ${
+            skillsVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+          style={{ transitionDelay: '0.2s' }}
+        >
           <div className="glass-effect rounded-2xl shadow-xl p-8 md:p-12 hover:shadow-2xl transition-all duration-300">
             <SkillsGrid />
           </div>
         </div>
 
         {/* Learning Journey Timeline */}
-        <div className="mb-20">
-          <h2 className="section-title text-center mb-12 animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+        <div 
+          ref={timelineRef}
+          className={`mb-20 transition-all duration-700 ease-out ${
+            timelineVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}
+          style={{ transitionDelay: '0.3s' }}
+        >
+          <h2 className="section-title text-center mb-12">
             Learning <span className="gradient-text">Journey</span>
           </h2>
           <div className="relative">
@@ -81,11 +103,11 @@ function About() {
                       index % 2 === 0 ? 'md:pr-12 md:text-right' : 'md:pl-12'
                     }`}
                   >
-                    <div className="group bg-white rounded-xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300 border border-gray-100/50 hover:border-primary-200 hover:-translate-y-1.5 hover:scale-[1.02]">
-                      <div className="text-primary-600 font-semibold mb-2 text-sm uppercase tracking-wide">{item.year}</div>
-                      <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-primary-600 transition-colors">{item.title}</h3>
-                      <div className="text-primary-600 font-medium mb-3">{item.organization}</div>
-                      <p className="text-gray-700 leading-relaxed">{item.description}</p>
+                    <div className="group bg-white dark:bg-gray-800 rounded-xl shadow-xl p-6 hover:shadow-2xl transition-all duration-300 border border-gray-100/50 dark:border-gray-700/50 hover:border-primary-200 dark:hover:border-primary-700 hover:-translate-y-1.5 hover:scale-[1.02]">
+                      <div className="text-primary-600 dark:text-primary-400 font-semibold mb-2 text-sm uppercase tracking-wide">{item.year}</div>
+                      <h3 className="text-xl font-bold text-gray-900 dark:text-gray-100 mb-1 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">{item.title}</h3>
+                      <div className="text-primary-600 dark:text-primary-400 font-medium mb-3">{item.organization}</div>
+                      <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{item.description}</p>
                     </div>
                   </div>
                 </div>

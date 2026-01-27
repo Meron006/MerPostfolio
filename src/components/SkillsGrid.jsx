@@ -145,7 +145,7 @@ function SkillsGrid() {
             <span className="w-1.5 h-10 bg-gradient-to-b from-primary-600 to-primary-400 rounded-full"></span>
             Technical Skills
           </h3>
-          <p className="text-gray-600 text-lg ml-6">
+          <p className="text-gray-600 dark:text-gray-400 text-lg ml-6">
             Technologies and tools I work with to build modern web applications
           </p>
         </div>
@@ -153,7 +153,7 @@ function SkillsGrid() {
           {technicalSkills.map((skill, index) => (
             <span
               key={skill}
-              className="group px-6 py-3.5 bg-gradient-to-br from-white to-primary-50 text-primary-700 rounded-xl text-base font-bold shadow-lg border-2 border-primary-200/50 hover:border-primary-400 hover:from-primary-50 hover:to-primary-100 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 cursor-default animate-fade-in-up flex items-center gap-2.5"
+              className="group px-6 py-3.5 bg-gradient-to-br from-white to-primary-50 dark:from-gray-800 dark:to-primary-900/30 text-primary-700 dark:text-primary-400 rounded-xl text-base font-bold shadow-lg border-2 border-primary-200/50 dark:border-primary-700/50 hover:border-primary-400 dark:hover:border-primary-500 hover:from-primary-50 hover:to-primary-100 dark:hover:from-primary-900/50 dark:hover:to-primary-800/50 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 cursor-default animate-fade-in-up flex items-center gap-2.5"
               style={{ animationDelay: `${index * 0.06}s` }}
             >
               <span className="group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">
@@ -172,7 +172,7 @@ function SkillsGrid() {
             <span className="w-1.5 h-10 bg-gradient-to-b from-primary-600 to-primary-400 rounded-full"></span>
             Professional Skills
           </h3>
-          <p className="text-gray-600 text-lg ml-6">
+          <p className="text-gray-600 dark:text-gray-400 text-lg ml-6">
             Core competencies that drive effective collaboration and project success
           </p>
         </div>
@@ -180,7 +180,7 @@ function SkillsGrid() {
           {softSkills.map((skill, index) => (
             <span
               key={skill}
-              className="group px-6 py-3.5 bg-gradient-to-br from-white to-gray-50 text-gray-700 rounded-xl text-base font-semibold shadow-lg border-2 border-gray-200/50 hover:border-primary-300 hover:from-primary-50 hover:to-white hover:text-primary-700 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 cursor-default animate-fade-in-up flex items-center gap-2.5"
+              className="group px-6 py-3.5 bg-gradient-to-br from-white to-gray-50 dark:from-gray-800 dark:to-gray-700/50 text-gray-700 dark:text-gray-300 rounded-xl text-base font-semibold shadow-lg border-2 border-gray-200/50 dark:border-gray-700/50 hover:border-primary-300 dark:hover:border-primary-600 hover:from-primary-50 hover:to-white dark:hover:from-primary-900/30 dark:hover:to-gray-800 hover:text-primary-700 dark:hover:text-primary-400 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 hover:scale-105 cursor-default animate-fade-in-up flex items-center gap-2.5"
               style={{ animationDelay: `${0.5 + index * 0.06}s` }}
             >
               <span className="group-hover:scale-110 group-hover:rotate-6 transition-transform duration-300">

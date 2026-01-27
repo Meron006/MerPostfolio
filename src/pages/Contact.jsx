@@ -138,14 +138,14 @@ function Contact() {
   }
 
   return (
-    <div className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-gray-50 to-white">
+    <div className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="max-w-4xl mx-auto">
         {/* Page Header */}
         <div className="text-center mb-16 animate-fade-in-up">
           <h1 className="section-title">
             Get In <span className="gradient-text">Touch</span>
           </h1>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto mt-4 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-4 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology.
           </p>
           <div className="section-divider mt-6"></div>
