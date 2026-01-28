@@ -15,7 +15,7 @@ function ProjectCard({ project }) {
   return (
     <div className="group bg-white dark:bg-gray-800 rounded-2xl shadow-2xl overflow-hidden card-hover border border-gray-100/60 dark:border-gray-700/60 relative">
       {/* Hover gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-50/0 to-primary-100/0 group-hover:from-primary-50/50 group-hover:to-primary-100/30 transition-all duration-500 pointer-events-none"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-primary-50/0 to-primary-100/0 dark:from-primary-900/0 dark:to-primary-800/0 group-hover:from-primary-50/50 group-hover:to-primary-100/30 dark:group-hover:from-primary-900/30 dark:group-hover:to-primary-800/20 transition-all duration-500 pointer-events-none"></div>
       
       {/* Project Image with zoom effect */}
       <div className="h-48 bg-gradient-to-br from-primary-100 via-primary-200 to-primary-300 flex items-center justify-center overflow-hidden relative">

@@ -152,18 +152,18 @@ function Contact() {
         </div>
 
         {/* Availability Notice */}
-        <div className="bg-gradient-to-r from-primary-50 to-primary-100 border-l-4 border-primary-600 p-6 mb-12 rounded-r-xl shadow-lg animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+        <div className="bg-gradient-to-r from-primary-50 to-primary-100 dark:from-primary-900/30 dark:to-primary-800/30 border-l-4 border-primary-600 dark:border-primary-500 p-6 mb-12 rounded-r-xl shadow-lg animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
           <div className="flex items-start">
             <div className="flex-shrink-0">
-              <svg className="h-6 w-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="h-6 w-6 text-primary-600 dark:text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
             <div className="ml-3">
-              <h3 className="text-lg font-semibold text-primary-900 mb-2">
+              <h3 className="text-lg font-semibold text-primary-900 dark:text-primary-200 mb-2">
                 Open to Opportunities
               </h3>
-              <p className="text-primary-800">
+              <p className="text-primary-800 dark:text-primary-300">
                 I'm currently open to internships, freelance projects, and full-time roles. 
                 Whether you have a specific project in mind or just want to connect, feel free to reach out!
               </p>

@@ -49,7 +49,7 @@ function Navbar() {
             aria-label="Home - MerPortfolio"
           >
             MerPortfolio
-            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 group-hover:w-full transition-all duration-300"></span>
+            <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-600 dark:bg-primary-400 group-hover:w-full transition-all duration-300"></span>
           </Link>
 
           {/* Desktop Navigation */}

@@ -32,7 +32,7 @@ function ScrollToTop() {
       {isVisible && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-50 p-4 bg-gradient-to-br from-primary-600 to-primary-700 text-white rounded-full shadow-2xl hover:shadow-primary-500/50 hover:scale-110 active:scale-95 transition-all duration-300 group animate-fade-in-up focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+          className="fixed bottom-8 right-8 z-40 p-4 bg-gradient-to-br from-primary-600 to-primary-700 dark:from-primary-500 dark:to-primary-600 text-white rounded-full shadow-2xl hover:shadow-primary-500/50 dark:hover:shadow-primary-400/50 hover:scale-110 active:scale-95 transition-all duration-300 group animate-fade-in-up focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900"
           aria-label="Scroll to top of page"
         >
           <svg

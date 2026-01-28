@@ -1,3 +1,4 @@
+import { useState, useMemo } from 'react'
 import AnimatedProjectCard from '../components/AnimatedProjectCard'
 
 /**
@@ -8,6 +9,7 @@ import AnimatedProjectCard from '../components/AnimatedProjectCard'
  * - Each project should have: title, description, image (optional), tech, features, github, demo (optional)
  */
 function Projects() {
+  const [selectedFilter, setSelectedFilter] = useState('All')
   // Edit this array to add, remove, or modify projects
   const projects = [
     {
@@ -62,6 +64,23 @@ function Projects() {
     },
   ]
 
+  // Get all unique technologies from projects
+  const allTechs = useMemo(() => {
+    const techSet = new Set()
+    projects.forEach((project) => {
+      project.tech.forEach((tech) => techSet.add(tech))
+    })
+    return ['All', ...Array.from(techSet).sort()]
+  }, [])
+
+  // Filter projects based on selected technology
+  const filteredProjects = useMemo(() => {
+    if (selectedFilter === 'All') {
+      return projects
+    }
+    return projects.filter((project) => project.tech.includes(selectedFilter))
+  }, [selectedFilter])
+
   return (
     <div className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-white via-gray-50 to-white dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
       <div className="max-w-7xl mx-auto">
@@ -76,12 +95,57 @@ function Projects() {
           <div className="section-divider mt-6"></div>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-          {projects.map((project, index) => (
-            <AnimatedProjectCard key={index} project={project} index={index} />
+        {/* Filter Buttons */}
+        <div className="mb-12 flex flex-wrap justify-center gap-3 animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+          {allTechs.map((tech) => (
+            <button
+              key={tech}
+              onClick={() => setSelectedFilter(tech)}
+              className={`px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-300 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 dark:focus:ring-offset-gray-900 ${
+                selectedFilter === tech
+                  ? 'bg-primary-600 dark:bg-primary-500 text-white shadow-lg scale-105'
+                  : 'bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 border-2 border-gray-200 dark:border-gray-700 hover:border-primary-400 dark:hover:border-primary-500 hover:text-primary-600 dark:hover:text-primary-400'
+              }`}
+              aria-pressed={selectedFilter === tech}
+            >
+              {tech}
+            </button>
           ))}
         </div>
+
+        {/* Projects Grid */}
+        {filteredProjects.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+            {filteredProjects.map((project, index) => (
+              <AnimatedProjectCard key={index} project={project} index={index} />
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-20 animate-fade-in-up">
+            <div className="inline-block p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-xl border border-gray-200 dark:border-gray-700">
+              <svg
+                className="w-16 h-16 mx-auto text-gray-400 dark:text-gray-600 mb-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                />
+              </svg>
+              <p className="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">
+                No projects found
+              </p>
+              <p className="text-gray-600 dark:text-gray-400">
+                Try selecting a different technology filter
+              </p>
+            </div>
+          </div>
+        )}
 
         {/* Call to Action */}
         <div className="mt-20 text-center animate-fade-in-up" style={{ animationDelay: '0.8s' }}>

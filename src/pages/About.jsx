@@ -80,7 +80,7 @@ function About() {
           </h2>
           <div className="relative">
             {/* Animated Timeline line */}
-            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary-200 via-primary-300 to-primary-200 transform md:-translate-x-0.5 rounded-full"></div>
+            <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary-200 via-primary-300 to-primary-200 dark:from-primary-800 dark:via-primary-700 dark:to-primary-800 transform md:-translate-x-0.5 rounded-full"></div>
 
             {/* Timeline items */}
             <div className="space-y-12">
@@ -93,8 +93,8 @@ function About() {
                   style={{ animationDelay: `${0.5 + index * 0.15}s` }}
                 >
                   {/* Animated Timeline dot */}
-                  <div className="absolute left-4 md:left-1/2 w-5 h-5 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full transform -translate-x-2.5 md:-translate-x-1/2 z-10 shadow-lg border-2 border-white animate-scale-in" style={{ animationDelay: `${0.6 + index * 0.15}s` }}>
-                    <div className="absolute inset-0 bg-primary-400 rounded-full animate-ping opacity-75"></div>
+                  <div className="absolute left-4 md:left-1/2 w-5 h-5 bg-gradient-to-br from-primary-500 to-primary-600 dark:from-primary-400 dark:to-primary-500 rounded-full transform -translate-x-2.5 md:-translate-x-1/2 z-10 shadow-lg border-2 border-white dark:border-gray-800 animate-scale-in" style={{ animationDelay: `${0.6 + index * 0.15}s` }}>
+                    <div className="absolute inset-0 bg-primary-400 dark:bg-primary-500 rounded-full animate-ping opacity-75"></div>
                   </div>
 
                   {/* Content */}

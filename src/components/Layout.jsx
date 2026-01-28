@@ -1,6 +1,7 @@
 import Navbar from './Navbar'
 import Footer from './Footer'
 import ScrollToTop from './ScrollToTop'
+import ScrollProgress from './ScrollProgress'
 
 /**
  * Layout component that wraps all pages
@@ -16,6 +17,7 @@ function Layout({ children }) {
       >
         Skip to main content
       </a>
+      <ScrollProgress />
       <Navbar />
       <main id="main-content" className="flex-grow" role="main">
         {children}
