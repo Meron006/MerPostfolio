@@ -363,7 +363,7 @@ function Contact() {
                 {[
                   { icon: 'email', title: 'Email', link: `mailto:${email}`, text: email },
                   { icon: 'github', title: 'GitHub', link: 'https://github.com/Meron006', text: 'github.com/Meron006' },
-                  { icon: 'linkedin', title: 'LinkedIn', link: 'https://www.linkedin.com/in/meron-berihu-849632397/', text: 'linkedin.com/in/meron-berihu-849632397' },
+                  { icon: 'linkedin', title: 'LinkedIn', link: 'https://www.linkedin.com/in/meronberihu0609', text: 'linkedin.com/in/meronberihu0609' },
                 ].map((item, index) => (
                   <div 
                     key={item.icon}
